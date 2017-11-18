@@ -17,14 +17,15 @@ app.post('/todos',(req,res)=>{
     });
     newTodos.save()
     .then((doc)=>{
-        console.log(doc);
-        res.send('ok')
+        console.log(doc)  
+        res.send(doc)
 
     })
-    .catch(err=>res.status(400));
+    .catch(err=>{res.status(400).send(err)});
 
 })
 
 
 app.listen(port,()=>console.log(`Server started on ${port}`));
 
+module.exports={app,mongoose}
